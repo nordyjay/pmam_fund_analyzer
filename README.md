@@ -8,8 +8,6 @@
 
 <!-- ANALYTICS -->
 
-## Daily Fund Performance Analytics
-
 ### Summary Statistics
 ### Correlation
 **Correlation between Sharpe Ratio and APR:** 0.98

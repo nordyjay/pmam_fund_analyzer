@@ -115,4 +115,4 @@ class FundPerformanceAnalyzer:
     def get_average_metrics_md(self, category='portfolio_managers'):
         df = self.believable_df
         avg_metrics = df.groupby(category)[['sharpe_ratio', 'apr']].mean().sort_values('sharpe_ratio', ascending=False)
-        return avg_metrics.round(2).to_markdown()
+        return avg_metrics.round(4).to_markdown()
