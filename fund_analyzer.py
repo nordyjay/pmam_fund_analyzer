@@ -1,6 +1,7 @@
 # fund_analyzer.py
 import pandas as pd
 from datetime import datetime
+import numpy as np
 import math
 
 class FundPerformanceAnalyzer:
@@ -10,14 +11,39 @@ class FundPerformanceAnalyzer:
         self._analyze_sharpe_ratios()
         self.believable_df = self.get_believable_df()
 
+    #def _compute_days_since_inception(self):
+    #    def calculate_days(date_str):
+    #        try:
+    #            inception_date = datetime.strptime(date_str, '%B %d, %Y')
+    #            return (datetime.today() - inception_date).days
+    #        except:
+    #            return None
+    #    self.df['days_since_inception'] = self.df['inception_date'].apply(calculate_days)
+
     def _compute_days_since_inception(self):
-        def calculate_days(date_str):
+        """
+        Computes the number of business days since the inception date for each entry in the DataFrame.
+        """
+        def calculate_business_days(date_str):
             try:
-                inception_date = datetime.strptime(date_str, '%B %d, %Y')
-                return (datetime.today() - inception_date).days
-            except:
+                # Parse the inception date string to a datetime object
+                inception_date = datetime.strptime(date_str, '%B %d, %Y').date()
+                today = datetime.today().date()
+                
+                # Convert dates to numpy datetime64[D] format
+                inception_np = np.datetime64(inception_date)
+                today_np = np.datetime64(today)
+                
+                # Calculate business days using numpy.busday_count
+                business_days = np.busday_count(inception_np, today_np)
+                
+                return int(business_days)
+            except Exception as e:
+                # Optionally, log the exception e for debugging
                 return None
-        self.df['days_since_inception'] = self.df['inception_date'].apply(calculate_days)
+
+        # Apply the calculate_business_days function to the 'inception_date' column
+        self.df['days_since_inception'] = self.df['inception_date'].apply(calculate_business_days)
 
     def _compute_confidence_interval(self, sharpe, days, confidence=1.96):
         if pd.isnull(sharpe) or pd.isnull(days) or days == 0:

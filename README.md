@@ -1,4 +1,4 @@
-# Picton Mahoney Fund Analytics
+# Picton Mahoney Asset Management Fund Performance Analytics
 
 ![Fund Performance](https://img.shields.io/badge/Status-Active-green)
 ![Python](https://img.shields.io/badge/Python-3.9-blue)
@@ -73,11 +73,9 @@ By computing the confidence intervals, the analysis ensures that only statistica
 
 <!-- ANALYTICS -->
 
-## Daily Fund Performance Analytics
 
 ### Summary Statistics
-### Correlation
-**Correlation between Sharpe Ratio and APR:** 0.49
+
 
 ### Top 3 Funds by Sharpe Ratio
 | fund_name                                             | fund_code   | asset_class          |   sharpe_ratio |   apr |
@@ -184,16 +182,15 @@ By computing the confidence intervals, the analysis ensures that only statistica
 | Picton Mahoney Fortified Special Situations Alternative Fund — F      |           0.12 |  3.48 |
 
 #### Asset Classes
-| asset_class             |   sharpe_ratio |     apr |
-|:------------------------|---------------:|--------:|
-| Market Neutral Equity   |         1.0975 |  7.33   |
-| Equity                  |         0.887  | 11.2972 |
-| Merger Arbitrage        |         0.8733 |  7.38   |
-| Multi-Asset             |         0.86   |  7.29   |
-| Multi-Asset Strategy    |         0.7554 |  6.1754 |
-| Alternative Mutual Fund |         0.65   |  4.86   |
-| Credit                  |         0.6408 |  4.9092 |
-| Core Fixed Income       |         0.3367 |  7.5867 |
+| asset_class           |   sharpe_ratio |     apr |
+|:----------------------|---------------:|--------:|
+| Market Neutral Equity |         1.0975 |  7.33   |
+| Equity                |         0.887  | 11.2972 |
+| Multi-Asset           |         0.86   |  7.29   |
+| Merger Arbitrage      |         0.8175 |  6.75   |
+| Multi-Asset Strategy  |         0.7554 |  6.1754 |
+| Credit                |         0.6408 |  4.9092 |
+| Core Fixed Income     |         0.3367 |  7.5867 |
 
 
 <!-- END ANALYTICS -->

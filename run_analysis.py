@@ -40,8 +40,7 @@ def generate_analytics_markdown(analyzer: FundPerformanceAnalyzer) -> str:
     analytics_md = f"""
 
 ### Summary Statistics
-### Correlation
-{correlation}
+
 
 ### Top 3 Funds by Sharpe Ratio
 {top_funds_sharpe}
