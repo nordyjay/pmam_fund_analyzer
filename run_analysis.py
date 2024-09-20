@@ -38,7 +38,6 @@ def generate_analytics_markdown(analyzer: FundPerformanceAnalyzer) -> str:
     avg_assets = analyzer.get_average_metrics_md(category='asset_class')
 
     analytics_md = f"""
-## Daily Fund Performance Analytics
 
 ### Summary Statistics
 ### Correlation

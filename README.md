@@ -1,10 +1,75 @@
-# Fund Performance Analytics
+# Picton Mahoney Fund Analytics
 
 ![Fund Performance](https://img.shields.io/badge/Status-Active-green)
 ![Python](https://img.shields.io/badge/Python-3.9-blue)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
-## Picton Manhoney Fund  Analytics
+
+## Introduction
+
+This repository analyzes the fund performance for Picton Mahoney Asset Management listed on their [PMAM Performance and Returns](https://picton-mahoney-mutual-fund-profiles-master.picton-mahoney-staging.transmissionmedia.ca/funds/en-US/?searchTerm=) site. The analysis provides key performance metrics, evaluates the reliability of these metrics, and presents the findings in an easily accessible format.
+
+## Core Steps
+
+1. **Scraping**:
+    - **Objective**: Extract comprehensive fund data from the PMAM Performance and Returns website.
+    - **Process**:
+        - Utilize web scraping techniques to navigate and retrieve relevant fund information.
+        - Implement the `FundCrawler` class, leveraging the `crawl4ai` library, to automate data extraction.
+        - Ensure accurate parsing of fund attributes such as Fund Name, APR, Sharpe Ratio, Max Drawdown, Inception Date, Asset Class, and Portfolio Managers.
+    - **Tools**: Python's `requests`, `BeautifulSoup`, and `crawl4ai` libraries.
+
+2. **Analysis**:
+    - **Objective**: Compute essential performance metrics and assess their reliability.
+    - **Process**:
+        - Use the extracted data to calculate key performance indicators, including Sharpe Ratios and Annual Percentage Rates (APR).
+        - Apply statistical methods to determine the confidence intervals for Sharpe Ratios, evaluating their believability and significance.
+        - Filter and categorize funds based on the reliability of their Sharpe Ratios to ensure meaningful analysis.
+    - **Tools**: Python's `pandas`, `math`, and statistical libraries.
+
+3. **Update**:
+    - **Objective**: Automate the presentation of analytics by updating the `README.md` file.
+    - **Process**:
+        - Generate Markdown-formatted analytics based on the computed metrics.
+        - Insert the latest analytics into the designated section of the `README.md` file, ensuring seamless integration.
+        - Utilize GitHub Actions to schedule daily updates, maintaining up-to-date analytics without manual intervention.
+    - **Tools**: Python scripting, GitHub Actions for automation.
+
+## Confidence Interval for Sharpe Ratio
+
+### Overview
+
+The Sharpe Ratio is a widely used metric to evaluate the risk-adjusted return of an investment. However, its reliability can be influenced by the sample size and variability in returns. To assess the believability of the Sharpe Ratio, this analysis employs confidence intervals.
+
+### Approach
+
+1. **Calculation of Confidence Interval**:
+    - **Standard Error (SE)**: 
+        \[
+        SE = \sqrt{\frac{1 + \frac{Sharpe^2}{2}}{Days}}
+        \]
+        - *Where*:
+            - *Sharpe*: The computed Sharpe Ratio.
+            - *Days*: Number of days the fund has been active.
+    - **Confidence Interval (CI)**:
+        \[
+        CI = Sharpe \pm (z \times SE)
+        \]
+        - *Where*:
+            - *z*: Z-score corresponding to the desired confidence level (1.96 for 95% confidence).
+
+2. **Interpretation**:
+    - **Believable Sharpe Ratio**: If the lower bound of the CI > 0, indicating statistically significant positive performance.
+    - **Not Believable Sharpe Ratio**: If the upper bound of the CI < 0, indicating negative performance.
+    - **Marginal**: If the CI includes zero, suggesting uncertainty in the Sharpe Ratio's reliability.
+
+### Significance
+
+By computing the confidence intervals, the analysis ensures that only statistically reliable Sharpe Ratios are considered in performance evaluations, thereby enhancing the credibility of the insights derived.
+
+
+
+
 
 <!-- ANALYTICS -->
 
