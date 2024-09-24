@@ -11,14 +11,6 @@ class FundPerformanceAnalyzer:
         self._analyze_sharpe_ratios()
         self.believable_df = self.get_believable_df()
 
-    #def _compute_days_since_inception(self):
-    #    def calculate_days(date_str):
-    #        try:
-    #            inception_date = datetime.strptime(date_str, '%B %d, %Y')
-    #            return (datetime.today() - inception_date).days
-    #        except:
-    #            return None
-    #    self.df['days_since_inception'] = self.df['inception_date'].apply(calculate_days)
 
     def _compute_days_since_inception(self):
         """
